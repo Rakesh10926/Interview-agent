@@ -1,60 +1,85 @@
-# ✈️ AI Travel Planner Agent
+# 🤖 AI Interview Preparation Agent
 
-An AI-powered Travel Planner built using Python, Streamlit, and Google's Gemini Generative AI. This application helps users plan personalized trips by generating detailed travel itineraries based on their destination, travel dates, budget, number of travelers, interests, and travel preferences.
+An AI-powered Interview Preparation Agent developed using Python, Streamlit, Google Gemini AI, and PyPDF. This application helps candidates prepare for job interviews by analyzing their resumes and generating personalized interview preparation reports based on their selected job role, experience level, interview type, and job description.
 
 ## 📌 Project Overview
 
-Planning a trip involves researching destinations, finding attractions, estimating expenses, selecting accommodation, and organizing daily activities.
+Preparing for a technical or HR interview requires understanding job requirements, identifying important skills, practicing interview questions, and improving communication.
 
-The **AI Travel Planner Agent** simplifies this process by using Generative AI to create a personalized travel plan based on user-provided information.
+The **AI Interview Preparation Agent** simplifies this process using Generative AI.
 
-Users enter their travel requirements, and the AI generates a structured itinerary with day-wise activities, sightseeing recommendations, food suggestions, estimated expenses, transportation options, and useful travel tips.
+Users upload their resumes, enter their desired job role, select their experience level and interview type, and optionally provide a job description.
+
+The application extracts information from the uploaded resume and uses Google Gemini AI to generate a personalized interview preparation report.
 
 ## 🎯 Objectives
 
-- Automate the travel planning process using AI.
-- Generate personalized travel itineraries.
-- Recommend attractions based on user interests.
-- Help travelers plan trips according to their budget.
-- Organize activities into a day-wise schedule.
-- Provide downloadable travel plans.
+- Automate interview preparation using Generative AI.
+- Analyze candidate resumes.
+- Generate role-specific interview preparation content.
+- Help candidates understand their strengths and skill gaps.
+- Provide personalized preparation recommendations.
+- Reduce the time required for interview preparation.
 
 ## 🚀 Features
 
-### 1. Destination-Based Planning
-- Enter the destination or travel route.
-- Specify the starting and ending dates.
-- Generate a travel plan based on the selected destination.
+### 1. Resume Upload
 
-### 2. Personalized Travel Preferences
-Users can customize their travel plans using:
-- Number of travelers.
-- Total travel budget in INR.
-- Travel style.
-- Interests and activities.
-- Additional travel preferences.
+- Upload a candidate's resume in PDF format.
+- Extract text from the uploaded PDF.
+- Use extracted resume information as context for AI-generated recommendations.
 
-### 3. AI-Generated Itinerary
+### 2. Job Role Selection
 
-The Gemini AI model generates:
+Users can specify the job role they want to prepare for.
 
-- Travel overview.
-- Day-by-day itinerary.
-- Popular tourist attractions.
-- Food and restaurant suggestions.
-- Accommodation recommendations.
-- Transportation suggestions.
-- Estimated travel expenses.
-- Important travel tips.
-- Packing checklist.
+Examples:
+- Python Developer
+- Java Developer
+- Software Engineer
+- Web Developer
+- Data Analyst
+- Cloud Engineer
 
-### 4. Budget Planning
+### 3. Experience Level
 
-The agent considers the user's budget and provides estimated expenses for different travel requirements, helping users organize their trip financially.
+Users can select their experience level to receive relevant preparation guidance.
 
-### 5. Downloadable Travel Plan
+Examples:
+- Fresher
+- Entry-Level
+- Experienced
 
-Users can download their generated itinerary as a Markdown file (`travel_itinerary.md`) for future reference.
+### 4. Interview Type
+
+The application allows users to specify the type of interview they want to prepare for.
+
+Examples:
+- Technical Interview
+- HR Interview
+- General Interview
+
+### 5. Job Description Analysis
+
+Users can provide a job description to help the AI understand the responsibilities, qualifications, and skills required for the position.
+
+The AI uses this information along with the resume to personalize the preparation report.
+
+### 6. AI-Powered Interview Preparation
+
+Google Gemini AI processes the provided information and generates an interview preparation report.
+
+The report can provide:
+- Resume-based preparation guidance.
+- Important technical topics to study.
+- Role-specific interview preparation.
+- Relevant interview questions.
+- Recommendations based on the job description.
+- Areas where the candidate can improve.
+
+### 7. Downloadable Report
+
+Users can download the generated interview preparation report for future reference.
 
 ## 🛠️ Technologies Used
 
@@ -62,75 +87,96 @@ Users can download their generated itinerary as a Markdown file (`travel_itinera
 |---|---|
 | Python | Backend programming |
 | Streamlit | Web application interface |
-| Google Gemini AI | AI-powered itinerary generation |
-| Google Gen AI SDK | Communication with Gemini |
+| Google Gemini AI | AI-powered interview preparation |
+| google-generativeai | Gemini API integration |
+| PyPDF | Extracting text from PDF resumes |
+| Pyngrok | Public access through a tunnel |
 | Requests | HTTP requests |
-| Pyngrok | Exposing the application through a public tunnel |
-| Markdown | Formatting generated itineraries |
 
 ## 🏗️ System Architecture
 
-The application follows a simple AI-powered workflow:
+The application follows an AI-powered resume analysis and interview preparation workflow.
 
 1. User opens the Streamlit application.
-2. User enters destination, dates, budget, and preferences.
-3. Python collects and processes the input.
-4. The application creates a structured prompt.
-5. The prompt is sent to the Google Gemini API.
-6. Gemini generates a personalized travel itinerary.
-7. Streamlit displays the generated result.
-8. The user downloads the itinerary.
+2. User uploads a PDF resume.
+3. PyPDF extracts the resume text.
+4. User enters the desired job role.
+5. User selects experience level and interview type.
+6. User optionally enters a job description.
+7. Python collects the information and creates an AI prompt.
+8. Google Gemini processes the prompt.
+9. The AI generates a personalized preparation report.
+10. Streamlit displays the result.
+11. User downloads the generated report.
 
 ### Architecture Flow
 
 ```text
-       USER
-         |
-         v
-  Streamlit Interface
-         |
-         v
-  Collect Travel Details
-         |
-         v
-  Python Application
-         |
-         v
-  Prompt Generation
-         |
-         v
-   Google Gemini API
-         |
-         v
-  AI-Generated Itinerary
-         |
-         v
-   Display in Streamlit
-         |
-         v
-   Download Travel Plan
+           USER
+             |
+             v
+      Streamlit Interface
+             |
+             v
+       Upload Resume
+             |
+             v
+      PDF Text Extraction
+           (PyPDF)
+             |
+             v
+     Collect User Details
+             |
+       +-----+------+
+       |            |
+       v            v
+    Job Role    Job Description
+       |            |
+       +-----+------+
+             |
+             v
+      Python Application
+             |
+             v
+       Prompt Generation
+             |
+             v
+       Google Gemini AI
+             |
+             v
+    Interview Preparation
+            Report
+             |
+             v
+      Display in Streamlit
+             |
+             v
+       Download Report
 ```
 
 ## 📂 Project Structure
 
 ```text
-AI-Travel-Planner-Agent/
+AI-Interview-Preparation-Agent/
 │
 ├── app.py
+│
+├── launch.py
 │
 ├── requirements.txt
 │
 ├── README.md
 │
-└── travel_itinerary.md
+└── .gitignore
 ```
 
 **File descriptions:**
 
-- `app.py` – Main Streamlit application containing the user interface and AI integration.
-- `requirements.txt` – Contains the Python dependencies.
+- `app.py` – Main application containing the Streamlit interface, resume processing, and Gemini AI integration.
+- `launch.py` – Supporting launch script used in the deployment/Colab workflow.
+- `requirements.txt` – Contains the required Python libraries.
 - `README.md` – Project documentation.
-- `travel_itinerary.md` – Downloaded itinerary generated by the application.
+- `.gitignore` – Prevents sensitive and unnecessary files from being uploaded to GitHub.
 
 ## ⚙️ Installation and Setup
 
@@ -148,7 +194,7 @@ git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
 ```bash
-cd AI-Travel-Planner-Agent
+cd AI-Interview-Preparation-Agent
 ```
 
 ### Step 2: Install Dependencies
@@ -157,70 +203,87 @@ cd AI-Travel-Planner-Agent
 pip install -r requirements.txt
 ```
 
-### Step 3: Configure Gemini API Key
+### Step 3: Generate Gemini API Key
 
-Get your API key from:
+Visit:
 
 https://aistudio.google.com/apikey
 
-Set the environment variables:
+Create an API key and copy it.
+
+### Step 4: Configure Environment Variable
 
 **Windows PowerShell:**
 
 ```powershell
 $env:GEMINI_API_KEY="YOUR_API_KEY"
-$env:GEMINI_MODEL="gemini-2.5-flash"
 ```
 
 **Linux / macOS:**
 
 ```bash
 export GEMINI_API_KEY="YOUR_API_KEY"
-export GEMINI_MODEL="gemini-2.5-flash"
 ```
 
-Never upload your actual API key to GitHub.
+Do not upload your actual API key to GitHub.
 
-### Step 4: Run the Application
+### Step 5: Run the Application
 
 ```bash
 streamlit run app.py
 ```
 
-The application will open in your browser.
+The application will start locally.
 
-Default local address:
+Open:
 
 ```text
 http://localhost:8501
 ```
 
+## 📦 Dependencies
+
+The project uses the following Python libraries:
+
+```text
+streamlit
+google-generativeai
+pypdf
+pyngrok
+requests
+```
+
+These dependencies can be installed using:
+
+```bash
+pip install streamlit google-generativeai pypdf pyngrok requests
+```
+
 ## ☁️ Deployment
 
-The application can be deployed using platforms such as Render.
+The application can be deployed using Render or accessed through a public tunnel using Ngrok in Google Colab.
 
 ### Render Deployment
 
-1. Push the project to GitHub.
+1. Upload the project to GitHub.
 2. Create a new Web Service in Render.
-3. Connect your GitHub repository.
-4. Configure the build command:
+3. Connect the GitHub repository.
+4. Set the build command:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Configure the start command:
+5. Set the start command:
 
 ```bash
 streamlit run app.py --server.port $PORT --server.address 0.0.0.0
 ```
 
-6. Add the following environment variables:
+6. Add the Gemini API key as an environment variable:
 
 ```text
 GEMINI_API_KEY = YOUR_API_KEY
-GEMINI_MODEL = gemini-2.5-flash
 ```
 
 7. Deploy the application.
@@ -231,52 +294,57 @@ GEMINI_MODEL = gemini-2.5-flash
 
 | Input | Example |
 |---|---|
-| Destination | Goa, India |
-| Travel dates | 5 days |
-| Travelers | 2 |
-| Budget | ₹25,000 |
-| Travel style | Adventure |
-| Interests | Beaches, food, sightseeing |
+| Resume | Rakesh_Resume.pdf |
+| Job Role | Python Developer |
+| Experience Level | Fresher |
+| Interview Type | Technical Interview |
+| Job Description | Python development, SQL, APIs |
 
 **Expected output:**
 
-The AI generates a personalized five-day Goa travel itinerary, including sightseeing recommendations, daily activities, food suggestions, estimated expenses, transportation options, and a packing checklist.
+The AI generates an interview preparation report based on the candidate's resume and selected job requirements.
+
+The report can include relevant interview questions, important topics to prepare, resume-based recommendations, and suggestions for improving interview readiness.
 
 ## 🔐 Security
 
-- Store API keys using environment variables.
-- Never commit `.env` files or API keys to GitHub.
-- Add sensitive configuration files to `.gitignore`.
-- Do not expose API credentials in application logs.
+- Keep Gemini API keys in environment variables.
+- Never commit API keys to GitHub.
+- Add `.env` files to `.gitignore`.
+- Handle uploaded resumes securely.
+- Avoid storing personal resume information unnecessarily.
 
 ## 🔮 Future Enhancements
 
-- Real-time flight and hotel price integration.
-- Google Maps integration.
-- Weather-based travel recommendations.
-- Hotel and flight booking integration.
-- Multi-destination trip planning.
-- User authentication and saved itineraries.
-- Real-time currency conversion.
-- Interactive itinerary maps.
+- AI-powered mock interview sessions.
+- Voice-based interview practice.
+- Speech recognition and response evaluation.
+- Real-time feedback on candidate answers.
+- Resume scoring and improvement suggestions.
+- Technical coding interview practice.
+- ATS-friendly resume analysis.
+- Interview performance tracking.
+- Personalized learning roadmaps.
 
 ## 🎓 Learning Outcomes
 
 Through this project, I gained practical experience in:
 
-- Python application development.
-- Building interactive applications using Streamlit.
+- Python programming.
+- Building applications using Streamlit.
 - Integrating Google Gemini Generative AI.
+- Extracting information from PDF documents.
+- Resume processing and analysis.
 - Prompt engineering.
 - Working with APIs.
-- Handling user inputs and generating dynamic content.
-- Deploying AI applications.
+- Creating AI-powered applications.
+- Deploying applications using cloud platforms.
 
 ## 👨‍💻 Author
 
 **Alapati Rakesh Chowdary**
 
-AI Travel Planner Agent – Generative AI Project
+AI Interview Preparation Agent – Generative AI Project
 
 ---
 
